@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.fidelitat"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="13"
+        android:targetSdkVersion="19" />
+
+    <permission
+        android:name="com.myapp.android.locationapi.maps.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/MyTheme" >
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyBFXViaCY7t3m2vs-4ZPM0egHJCzZGGif4" />
+
+        <activity
+            android:name="com.fidelitat.HomeActivity"
+            android:label="@string/title_activity_home" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.fidelitat.MapsActivity"
+            android:label="@string/title_activity_maps"
+            android:parentActivityName="com.fidelitat.ShopListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fidelitat.ShopListActivity" />
+        </activity>
+        <activity
+            android:name="com.fidelitat.SearchActivity"
+            android:label="@string/title_activity_search"
+            android:parentActivityName="com.fidelitat.MapsActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fidelitat.MapsActivity" />
+        </activity>
+        <activity
+            android:name="com.fidelitat.SelectedItemActivity"
+            android:label="@string/title_activity_selected_item"
+            android:parentActivityName="com.fidelitat.ShopListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fidelitat.ShopListActivity" />
+        </activity>
+        <activity
+            android:name="com.fidelitat.ShopListActivity"
+            android:label="@string/title_activity_shop_list"
+            android:parentActivityName="com.fidelitat.HomeActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fidelitat.HomeActivity" />
+        </activity>
+        <activity
+            android:name="com.fidelitat.MyCardsActivity"
+            android:label="@string/title_activity_my_cards"
+            android:parentActivityName="com.fidelitat.HomeActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fidelitat.HomeActivity" />
+        </activity>
+        <activity
+            android:name="com.card.GridViewExampleActivity"
+            android:label="@string/title_activity_my_cards"
+            android:parentActivityName="com.fidelitat.MyCardsActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fidelitat.MyCardsActivity" />
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,61 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${packageName}.${activityClass}" >
+
+    <ImageView
+        android:id="@+id/imgShopLogo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="19dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/common_signin_btn_icon_light" />
+
+    <ImageView
+        android:id="@+id/imgShopType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/imgShopLogo"
+        android:layout_marginRight="18dp"
+        android:src="@drawable/ic_menu_info_details" />
+
+    <TextView
+        android:id="@+id/txtShopName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/imgShopLogo"
+        android:layout_below="@+id/imgShopLogo"
+        android:layout_toLeftOf="@+id/ImageView02"
+        android:text="txtShopName" />
+
+    <TextView
+        android:id="@+id/txtDescripcion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtShopName"
+        android:layout_alignRight="@+id/ImageView02"
+        android:layout_below="@+id/txtShopName"
+        android:layout_marginTop="17dp"
+        android:text="txtDescripcion" />
+
+    <ImageView
+        android:id="@+id/imgShopTelephone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/imgShopType"
+        android:layout_below="@+id/imgShopType"
+        android:src="@drawable/ic_menu_call" />
+
+    <ImageView
+        android:id="@+id/ImgShopFacebook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imgShopLogo"
+        android:layout_alignLeft="@+id/imgShopTelephone"
+        android:src="@drawable/ic_facebook" />
+
+</RelativeLayout>

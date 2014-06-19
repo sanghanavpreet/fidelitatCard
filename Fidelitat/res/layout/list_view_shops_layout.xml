@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlt_main"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:baselineAligned="true" >
+
+        <ImageView
+            android:id="@+id/imgShopListLogo"
+            android:layout_width="80dp"
+            android:layout_height="80dp" />
+
+        <TextView
+            android:id="@+id/txtShopNameList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/imgShopListLogo"
+            android:padding="6dp"
+            android:text="shop name"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imgShopType"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="14dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_menu_info_details" />
+
+        <TextView
+            android:id="@+id/txtShopDescripcionList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/imgShopListLogo"
+            android:layout_alignLeft="@+id/txtShopNameList"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/txtShopNameList"
+            android:padding="6dp"
+            android:text="shop descripcion"
+            android:textStyle="italic" />
+
+    </RelativeLayout>
+
+</LinearLayout>
