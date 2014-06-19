@@ -42,7 +42,6 @@
             android:layout_alignBottom="@+id/imgShopListLogo"
             android:layout_alignLeft="@+id/txtShopNameList"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/txtShopNameList"
             android:padding="6dp"
             android:text="shop descripcion"
             android:textStyle="italic" />

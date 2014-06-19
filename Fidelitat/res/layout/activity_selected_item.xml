@@ -55,6 +55,6 @@
         android:layout_alignLeft="@+id/imgShopTelephone"
         android:layout_below="@+id/imgShopTelephone"
         android:layout_marginTop="14dp"
-        android:src="@drawable/ic_map_actionbar_icon" />
+        android:src="@drawable/ic_twitter" />
 
 </RelativeLayout>
