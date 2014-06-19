@@ -45,6 +45,7 @@ public class SelectedItemActivity extends Activity {
 	private void SetInfo(ShopList shoplist) {
 		
 		txtShopName.setText(shoplist.getArrayShop().get(0).getShopName());
+		txtDescripcion.setText(shoplist.getArrayShop().get(0).getDesceiption());
 	}
 
 	@Override
