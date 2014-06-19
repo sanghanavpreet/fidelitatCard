@@ -29,7 +29,6 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/imgShopLogo"
         android:layout_below="@+id/imgShopLogo"
-        android:layout_toLeftOf="@+id/ImageView02"
         android:text="txtShopName" />
 
     <TextView
@@ -37,7 +36,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/txtShopName"
-        android:layout_alignRight="@+id/ImageView02"
         android:layout_below="@+id/txtShopName"
         android:layout_marginTop="17dp"
         android:text="txtDescripcion" />
@@ -54,8 +52,9 @@
         android:id="@+id/ImgShopFacebook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imgShopLogo"
         android:layout_alignLeft="@+id/imgShopTelephone"
-        android:src="@drawable/ic_facebook" />
+        android:layout_below="@+id/imgShopTelephone"
+        android:layout_marginTop="14dp"
+        android:src="@drawable/ic_map_actionbar_icon" />
 
 </RelativeLayout>
