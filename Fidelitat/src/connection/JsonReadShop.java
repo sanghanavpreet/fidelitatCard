@@ -50,8 +50,7 @@ public class JsonReadShop extends AsyncTask<String, Void, ShopList> {
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
 			HttpResponse response = httpclient.execute(httppost);
-			jsonResult = inputStreamToString(response.getEntity().getContent())
-					.toString();
+			jsonResult = inputStreamToString(response.getEntity().getContent()).toString();
 			Log.i("prova", jsonResult);
 			converteixPlaylist(jsonResult);
 		}
@@ -101,7 +100,7 @@ public class JsonReadShop extends AsyncTask<String, Void, ShopList> {
 				String address = jsonChildNode.optString("address");
 				String email = jsonChildNode.optString("email");
 				String web = jsonChildNode.optString("web");
-				String telephones_fix = jsonChildNode.optString("telephones");
+				String telephones_fix = jsonChildNode.optString("telephone");
 				String telephones_mob = jsonChildNode.optString("cellphone");
 				String zipCode = jsonChildNode.optString("zipCode");
 				String city = jsonChildNode.optString("city");
@@ -110,23 +109,30 @@ public class JsonReadShop extends AsyncTask<String, Void, ShopList> {
 				int parentId = jsonChildNode.optInt("parentId");
 				String parentName = jsonChildNode.optString("parentName");
 				String status = jsonChildNode.optString("status");
+				String fb = jsonChildNode.optString("facebookUrl");
+				String twitter = jsonChildNode.optString("twitterUrl");
 
-//				 Song song = new Song(songid, songName, genre, new
-//				 Album(album), new Artist(artistname,
-//				 artistsurname));
-				 Shop shop = new Shop(shopId, shopName, description, new TypeShop(typeId, null, null, icon), longitude, latitude, address, email, web, telephones_fix, telephones_mob, zipCode, city, coverSmallUrl, coverBigUrl, status);
-				
-//				Log.e("song", (shopId + "|" + shopName + "|" + description
-//						+ "|" + typeId + "|" + icon + "|" + longitude + "|" + latitude
-//						+ "|" + address + "|" + email + "|" + web
-//						+ "|" + telephones_fix + "|" + telephones_mob + "|" + zipCode
-//						+ "|" + city + "|" + coverSmallUrl + "|" + coverBigUrl + "|" + parentId
-//						+ "|" + parentName + "|" + status).toString());
+				// Song song = new Song(songid, songName, genre, new
+				// Album(album), new Artist(artistname,
+				// artistsurname));
+				Shop shop = new Shop(shopId, shopName, description, new TypeShop(typeId, null, null, icon), longitude,
+						latitude, address, email, web, "625905874", "625905874", fb, twitter, zipCode, city,
+						coverSmallUrl, coverBigUrl, status);
+				// Log.e("telephone", "tele" + shop.toString());
+				// Log.e("song", (shopId + "|" + shopName + "|" + description
+				// + "|" + typeId + "|" + icon + "|" + longitude + "|" +
+				// latitude
+				// + "|" + address + "|" + email + "|" + web
+				// + "|" + telephones_fix + "|" + telephones_mob + "|" + zipCode
+				// + "|" + city + "|" + coverSmallUrl + "|" + coverBigUrl + "|"
+				// + parentId
+				// + "|" + parentName + "|" + status).toString());
 				// Add in playlisy
-				
+
 				shopList.addShop(shop);
-				Log.e("shoppp",  shop.getShopName());
-				Log.e("shodd",  shopList.getArrayShop().get(0).getShopName());
+				Log.e("telephone", "tele" + shop.getTelephones_fix());
+				// Log.e("shoddtelephone",
+				// shopList.getArrayShop().get(0).getTelephones_fix());
 			}
 
 		} catch (JSONException e) {

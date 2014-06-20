@@ -4,57 +4,70 @@
     android:layout_height="match_parent"
     tools:context="${packageName}.${activityClass}" >
 
-    <ImageView
-        android:id="@+id/imgShopLogo"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="19dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/common_signin_btn_icon_light" />
-
-    <ImageView
-        android:id="@+id/imgShopType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/imgShopLogo"
-        android:layout_marginRight="18dp"
-        android:src="@drawable/ic_menu_info_details" />
+        android:layout_alignParentTop="true" >
+
+        <ImageView
+            android:id="@+id/imgSelectShopLogo"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_launcherm" />
+
+        <ImageView
+            android:id="@+id/imgSelectShopType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/ic_menu_info_details" />
+
+        <ImageButton
+            android:id="@+id/ImgSelectShopFacebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/imgSelectShopType"
+            android:src="@drawable/ic_facebookk" />
+
+        <ImageButton
+            android:id="@+id/imgSelectShopTelephone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/imgSelectShopType"
+            android:layout_below="@+id/ImgSelectShopFacebook"
+            android:layout_marginTop="14dp"
+            android:src="@drawable/ic_menu_call" />
+
+    </RelativeLayout>
 
     <TextView
-        android:id="@+id/txtShopName"
+        android:id="@+id/txtSelectShopDescripcion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/imgShopLogo"
-        android:layout_below="@+id/imgShopLogo"
-        android:text="txtShopName" />
-
-    <TextView
-        android:id="@+id/txtDescripcion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txtShopName"
-        android:layout_below="@+id/txtShopName"
-        android:layout_marginTop="17dp"
+        android:layout_alignLeft="@+id/txtSelectShopName"
+        android:layout_centerVertical="true"
         android:text="txtDescripcion" />
 
-    <ImageView
-        android:id="@+id/imgShopTelephone"
+    <TextView
+        android:id="@+id/txtSelectShopName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/imgShopType"
-        android:layout_below="@+id/imgShopType"
-        android:src="@drawable/ic_menu_call" />
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/txtSelectShopDescripcion"
+        android:layout_marginTop="36dp"
+        android:text="txtShopName" />
 
-    <ImageView
-        android:id="@+id/ImgShopFacebook"
+    <GridView
+        android:id="@+id/SelectShopGridView1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/imgShopTelephone"
-        android:layout_below="@+id/imgShopTelephone"
-        android:layout_marginTop="14dp"
-        android:src="@drawable/ic_twitter" />
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:numColumns="5" >
+    </GridView>
 
 </RelativeLayout>

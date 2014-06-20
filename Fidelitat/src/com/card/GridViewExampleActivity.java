@@ -74,12 +74,15 @@ public class GridViewExampleActivity extends Activity {
 		
 		// dibuxem quadrats
 		totalPuntslist = new ArrayList<String>();
+		listpunts = new ArrayList<Integer>();
+		
+		
 		for (int i = 1; i <= numTotal; i++) {
 			totalPuntslist.add("");
 		}
 
 		// dibuxem les punts que te client
-		listpunts = new ArrayList<Integer>();
+		
 		for (int i = 1; i <= punt; i++) {
 
 			listpunts.add(R.drawable.logo_apple);

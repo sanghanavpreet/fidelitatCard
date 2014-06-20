@@ -12,21 +12,21 @@
         android:baselineAligned="true" >
 
         <ImageView
-            android:id="@+id/imgShopListLogo"
+            android:id="@+id/imgAdaptarShopListLogo"
             android:layout_width="80dp"
             android:layout_height="80dp" />
 
         <TextView
-            android:id="@+id/txtShopNameList"
+            android:id="@+id/txtAdaptarShopNameList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/imgShopListLogo"
+            android:layout_toRightOf="@+id/imgAdaptarShopListLogo"
             android:padding="6dp"
             android:text="shop name"
             android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/imgShopType"
+            android:id="@+id/imgAdaptarSelectShopType"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_alignParentRight="true"
@@ -36,11 +36,11 @@
             android:src="@drawable/ic_menu_info_details" />
 
         <TextView
-            android:id="@+id/txtShopDescripcionList"
+            android:id="@+id/txtAdaptarShopDescripcionList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/imgShopListLogo"
-            android:layout_alignLeft="@+id/txtShopNameList"
+            android:layout_alignBottom="@+id/imgAdaptarShopListLogo"
+            android:layout_alignLeft="@+id/txtAdaptarShopNameList"
             android:layout_alignParentRight="true"
             android:padding="6dp"
             android:text="shop descripcion"

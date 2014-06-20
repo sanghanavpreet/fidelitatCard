@@ -24,7 +24,6 @@ public class ShopListActivity extends Activity {
 
 	private String url = "http://apps.digiteix.info:9031/tarjetes-fidelitzacio/tarjetes-fidelitzacio/api/json/shops";
 	private ShopList shopList;
-	private ShopList selectedShop;
 	private ListView listView;
 	private SimpleAdapterAllshops adapter;
 
@@ -34,35 +33,20 @@ public class ShopListActivity extends Activity {
 		setContentView(R.layout.activity_shop_list);
 
 		shopList = new ShopList();
-		
 
 		listView = (ListView) findViewById(R.id.listViewAllShops);
 		listView.setOnItemClickListener(new OnItemClickListener() {
 
-			private Context context;
-
 			@Override
 			public void onItemClick(AdapterView<?> parent, View v,
 					int position, long arg3) {
-				selectedShop = new ShopList();
+				
 				Shop shop = shopList.getArrayShop().get(position);
 				
-				Log.i("shoppppp", shop.getShopName());
-				
-//				if (selectedShop.getArrayShop().size() == 0){
-					selectedShop.addShop(shop);
-//				}else{
-//					selectedShop = new ShopList();
-//					selectedShop.addShop(shop);
-//				}
-				
-				
-				Log.i("selectedShop size", Integer.toString(selectedShop.getArrayShop().size()));
-//				Log.i("selectedShop name", selectedShop.getArrayShop().get(selectedShop.getArrayShop().size()).getShopName());
-				
-				
-				Intent intent = new Intent(ShopListActivity.this, SelectedItemActivity.class);
-				intent.putExtra("SHOPLIST", selectedShop);
+
+				Intent intent = new Intent(ShopListActivity.this,
+						SelectedItemActivity.class);
+				intent.putExtra("SHOPLIST", shop);
 				startActivity(intent);
 			}
 		});

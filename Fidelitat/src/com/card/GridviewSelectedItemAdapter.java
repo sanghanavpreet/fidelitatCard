@@ -2,26 +2,26 @@ package com.card;
 
 import java.util.ArrayList;
 
-import com.fidelitat.R;
-
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-public class GridviewAdapter extends BaseAdapter {
+import com.card.GridviewAdapter.ViewHolder;
+import com.fidelitat.R;
+
+public class GridviewSelectedItemAdapter extends BaseAdapter {
 	private ArrayList<String> listCountry;
 	private ArrayList<Integer> listFlag;
 	private Activity activity;
 
-	public GridviewAdapter(Activity activity, ArrayList<String> listCountry,
-			ArrayList<Integer> listFlag) {
+	public GridviewSelectedItemAdapter(Activity activity, ArrayList<String> listContactes,
+			ArrayList<Integer> listConImg) {
 		super();
-		this.listCountry = listCountry;
-		this.listFlag = listFlag;
+		this.listCountry = listContactes;
+		this.listFlag = listConImg;
 		this.activity = activity;
 	}
 

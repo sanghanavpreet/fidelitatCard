@@ -21,6 +21,8 @@ public class Shop implements Serializable {
 	private String coverSmallUrl;
 	private String coverBigUrl;
 	private String status;
+	private String facebookUrl;
+	private String twitterUrl;
 
 	public Shop() {
 	}
@@ -28,7 +30,7 @@ public class Shop implements Serializable {
 	public Shop(int shopId, String shopName, String desceiption,
 			TypeShop id_type, long longitud, long latitiud,
 			String address, String email, String web, String telephones_fix,
-			String telephones_mob, String zipCode, String city,
+			String telephones_mob, String facebookUrl, String twitterUrl, String zipCode, String city,
 			String coverSmallUrl, String coverBigUrl, String status) {
 		super();
 		this.shopId = shopId;
@@ -42,6 +44,8 @@ public class Shop implements Serializable {
 		this.web = web;
 		this.telephones_fix = telephones_fix;
 		this.telephones_mob = telephones_mob;
+		this.facebookUrl = facebookUrl;
+		this.twitterUrl = twitterUrl;
 		this.zipCode = zipCode;
 		this.city = city;
 		this.coverSmallUrl = coverSmallUrl;
@@ -177,6 +181,22 @@ public class Shop implements Serializable {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public String getFacebookUrl() {
+		return facebookUrl;
+	}
+
+	public void setFacebookUrl(String facebookUrl) {
+		this.facebookUrl = facebookUrl;
+	}
+
+	public String getTwitterUrl() {
+		return twitterUrl;
+	}
+
+	public void setTwitterUrl(String twitterUrl) {
+		this.twitterUrl = twitterUrl;
 	}
 
 }

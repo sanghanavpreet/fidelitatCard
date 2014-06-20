@@ -56,13 +56,13 @@ public class SimpleAdapterAllshops extends ArrayAdapter<Shop> {
 		Shop c = itemList.get(position);
 
 		//Get artist name and surname
-		TextView shopName = (TextView) v.findViewById(R.id.txtShopNameList);
-		TextView shopDesc = (TextView) v.findViewById(R.id.txtShopDescripcionList);
-		ImageView imgTyp = (ImageView) v.findViewById(R.id.imgShopType);
-		ImageView imgShopLogo = (ImageView) v.findViewById(R.id.imgShopListLogo);
+		TextView shopName = (TextView) v.findViewById(R.id.txtAdaptarShopNameList);
+		TextView shopDesc = (TextView) v.findViewById(R.id.txtAdaptarShopDescripcionList);
+		ImageView imgTyp = (ImageView) v.findViewById(R.id.imgAdaptarSelectShopType);
+		ImageView imgShopLogo = (ImageView) v.findViewById(R.id.imgAdaptarShopListLogo);
 		
 		shopName.setText(c.getShopName());
-		shopDesc.setText(c.getDesceiption());
+		shopDesc.setText(c.getAddress());
 //		imgTyp.setImageBitmap(bm);
 //		imgShopLogo
 
