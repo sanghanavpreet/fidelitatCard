@@ -51,7 +51,7 @@ public class GridviewSelectedItemAdapter extends BaseAdapter {
 
 		if (convertView == null) {
 			view = new ViewHolder();
-			convertView = inflator.inflate(R.layout.gridview_adaptar, null);
+			convertView = inflator.inflate(R.layout.gridview_selectedcard_adaptar, null);
 
 			
 			view.imgViewFlag = (ImageView) convertView

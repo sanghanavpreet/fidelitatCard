@@ -58,13 +58,16 @@ public class SelectedItemActivity extends Activity {
 				gridView.setOnItemClickListener(new OnItemClickListener() {
 					@Override
 					public void onItemClick(AdapterView<?> parent, View arg1, int position, long arg3) {
-						Toast.makeText(SelectedItemActivity.this, " ff", Toast.LENGTH_SHORT).show();
+						Toast.makeText(SelectedItemActivity.this, " ff" + listContactes.get(position), Toast.LENGTH_SHORT).show();
+					
+					
+					
 					}
 				});
 
 				if (!shop.getEmail().isEmpty()) {
-					listContactes.add("");
-					listConImg.add(R.drawable.logo_apple);
+					listContactes.add("email");
+					listConImg.add(R.drawable.ic_message);
 
 					imgFacebook.setOnClickListener(new OnClickListener() {
 
@@ -76,7 +79,7 @@ public class SelectedItemActivity extends Activity {
 					});
 				}
 				if (!shop.getFacebookUrl().isEmpty()) {
-					listContactes.add("");
+					listContactes.add("facebook");
 					listConImg.add(R.drawable.ic_facebookk);
 
 					imgFacebook.setOnClickListener(new OnClickListener() {
@@ -88,8 +91,8 @@ public class SelectedItemActivity extends Activity {
 						}
 					});
 				}
-				if (!shop.getTelephones_fix().isEmpty() && shop.getTelephones_mob().isEmpty()) {
-					listContactes.add("");
+				if (!shop.getTelephones_fix().isEmpty() && !shop.getTelephones_mob().isEmpty()) {
+					listContactes.add("teleohone");
 					listConImg.add(R.drawable.ic_menu_call);
 
 					imgTelephone.setOnClickListener(new OnClickListener() {

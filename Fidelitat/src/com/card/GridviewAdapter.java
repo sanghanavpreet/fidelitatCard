@@ -51,7 +51,7 @@ public class GridviewAdapter extends BaseAdapter {
 
 		if (convertView == null) {
 			view = new ViewHolder();
-			convertView = inflator.inflate(R.layout.gridview_adaptar, null);
+			convertView = inflator.inflate(R.layout.gridview_mycard_adaptar, null);
 
 			
 			view.imgViewFlag = (ImageView) convertView
