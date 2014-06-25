@@ -25,23 +25,6 @@
             android:layout_alignParentTop="true"
             android:src="@drawable/ic_menu_info_details" />
 
-        <ImageButton
-            android:id="@+id/ImgSelectShopFacebook"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/imgSelectShopType"
-            android:src="@drawable/ic_facebookk" />
-
-        <ImageButton
-            android:id="@+id/imgSelectShopTelephone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/imgSelectShopType"
-            android:layout_below="@+id/ImgSelectShopFacebook"
-            android:layout_marginTop="14dp"
-            android:src="@drawable/ic_menu_call" />
-
     </RelativeLayout>
 
     <TextView
@@ -67,7 +50,7 @@
         android:layout_height="80dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:numColumns="5" >
+        android:numColumns="6" >
     </GridView>
 
 </RelativeLayout>

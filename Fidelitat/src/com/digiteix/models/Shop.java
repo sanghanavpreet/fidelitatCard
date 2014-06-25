@@ -9,8 +9,8 @@ public class Shop implements Serializable {
 	private String shopName;
 	private String desceiption;
 	private TypeShop id_type;
-	private long longitud;
-	private long latitiud;
+	private String longitud;
+	private String latitiud;
 	private String address;
 	private String email;
 	private String web;
@@ -28,7 +28,7 @@ public class Shop implements Serializable {
 	}
 
 	public Shop(int shopId, String shopName, String desceiption,
-			TypeShop id_type, long longitud, long latitiud,
+			TypeShop id_type, String longitud, String latitiud,
 			String address, String email, String web, String telephones_fix,
 			String telephones_mob, String facebookUrl, String twitterUrl, String zipCode, String city,
 			String coverSmallUrl, String coverBigUrl, String status) {
@@ -87,19 +87,19 @@ public class Shop implements Serializable {
 		this.id_type = id_type;
 	}
 
-	public long getLongitud() {
+	public String getLongitud() {
 		return longitud;
 	}
 
-	public void setLongitud(long longitud) {
+	public void setLongitud(String longitud) {
 		this.longitud = longitud;
 	}
 
-	public long getLatitiud() {
+	public String getLatitiud() {
 		return latitiud;
 	}
 
-	public void setLatitiud(long latitiud) {
+	public void setLatitiud(String latitiud) {
 		this.latitiud = latitiud;
 	}
 

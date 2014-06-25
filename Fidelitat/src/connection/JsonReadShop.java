@@ -95,8 +95,8 @@ public class JsonReadShop extends AsyncTask<String, Void, ShopList> {
 				String description = jsonChildNode.optString("description");
 				int typeId = jsonChildNode.optInt("typeId");
 				String icon = jsonChildNode.optString("icon");
-				long longitude = jsonChildNode.optInt("longitude");
-				long latitude = jsonChildNode.optInt("latitude");
+				String longitude = jsonChildNode.optString("longitude");
+				String latitude = jsonChildNode.optString("latitude");
 				String address = jsonChildNode.optString("address");
 				String email = jsonChildNode.optString("email");
 				String web = jsonChildNode.optString("web");
@@ -116,7 +116,7 @@ public class JsonReadShop extends AsyncTask<String, Void, ShopList> {
 				// Album(album), new Artist(artistname,
 				// artistsurname));
 				Shop shop = new Shop(shopId, shopName, description, new TypeShop(typeId, null, null, icon), longitude,
-						latitude, address, email, web, "625905874", "625905874", fb, twitter, zipCode, city,
+						latitude, address, email, web, "625905874", "625905874", "159787794034679", "navpreetsangha1", zipCode, city,
 						coverSmallUrl, coverBigUrl, status);
 				// Log.e("telephone", "tele" + shop.toString());
 				// Log.e("song", (shopId + "|" + shopName + "|" + description

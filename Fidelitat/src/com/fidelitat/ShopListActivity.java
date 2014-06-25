@@ -55,7 +55,7 @@ public class ShopListActivity extends Activity {
 			JsonReadShop task = new JsonReadShop(shopList, url);
 			shopList = task.execute(new String[] {}).get();
 
-			Log.i("shoppppp", Integer.toString(shopList.getArrayShop().size()));
+//			Log.i("shoppppp", Integer.toString(shopList.getArrayShop().size()));
 
 			if (task.getStatus().FINISHED != null) {
 				adapter = new SimpleAdapterAllshops(getApplicationContext(),
@@ -81,6 +81,8 @@ public class ShopListActivity extends Activity {
 		if (id == R.id.action_mapicon) {
 			Intent i = new Intent(this, MapsActivity.class);
 			i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			i.putExtra("SHOPLIST", shopList);
+			Log.i("shoplist 1 size", Integer.toString(shopList.getArrayShop().size()));
 			startActivity(i);
 			return true;
 		}
