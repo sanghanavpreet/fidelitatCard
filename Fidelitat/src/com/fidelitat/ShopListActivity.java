@@ -1,10 +1,12 @@
 package com.fidelitat;
 
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
+import DAO.ShopList_ShopDAO;
+import DAO.ShopType_ShopTypeDAO;
 import adapter.SimpleAdapterAllshops;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,15 +19,22 @@ import android.widget.ListView;
 
 import com.digiteix.models.Shop;
 import com.digiteix.models.ShopList;
+import com.digiteix.models.TypeShopList;
 
 import connection.JsonReadShop;
+import connection.JsonReadTypeShop;
 
 public class ShopListActivity extends Activity {
 
-	private String url = "http://apps.digiteix.info:9031/tarjetes-fidelitzacio/tarjetes-fidelitzacio/api/json/shops";
+	private String urlShop = "http://apps.digiteix.info:9031/tarjetes-fidelitzacio/tarjetes-fidelitzacio/api/json/shops";
+	private String urlTypeShop = "http://apps.digiteix.info:9031/tarjetes-fidelitzacio/tarjetes-fidelitzacio/shops/api/json/categories?complete_url_p=0&modified_after=";
 	private ShopList shopList;
 	private ListView listView;
 	private SimpleAdapterAllshops adapter;
+	private TypeShopList typeShop;
+	private ShopList_ShopDAO shoplist_shopDAO;
+	private ShopType_ShopTypeDAO shopTypeList_shopTypeDAO;
+	private ShopList shoplistArray;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,41 +42,62 @@ public class ShopListActivity extends Activity {
 		setContentView(R.layout.activity_shop_list);
 
 		shopList = new ShopList();
+		typeShop = new TypeShopList();
 
 		listView = (ListView) findViewById(R.id.listViewAllShops);
+
+		JsonReadShop task = new JsonReadShop(shopList, urlShop);
+		try {
+			shopList = task.execute(new String[] {}).get();
+
+			JsonReadTypeShop task1 = new JsonReadTypeShop(typeShop, urlTypeShop);
+
+			typeShop = task1.execute(new String[] {}).get();
+
+			if (task.getStatus().FINISHED != null) {
+				SaveShopListSQLite(shopList);
+				SaveShopTypeSQLite(typeShop);
+
+				GetAllShopsSQLite();
+			} else {
+				GetAllShopsSQLite();
+			}
+		} catch (InterruptedException | ExecutionException e) {
+			e.printStackTrace();
+		}
 		listView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
-			public void onItemClick(AdapterView<?> parent, View v,
-					int position, long arg3) {
-				
-				Shop shop = shopList.getArrayShop().get(position);
-				
+			public void onItemClick(AdapterView<?> parent, View v, int position, long arg3) {
 
-				Intent intent = new Intent(ShopListActivity.this,
-						SelectedItemActivity.class);
+				Shop shop = shopList.getArrayShop().get(position);
+
+				Intent intent = new Intent(ShopListActivity.this, SelectedItemActivity.class);
 				intent.putExtra("SHOPLIST", shop);
 				startActivity(intent);
 			}
 		});
 
-		try {
-			JsonReadShop task = new JsonReadShop(shopList, url);
-			shopList = task.execute(new String[] {}).get();
+	}
 
-//			Log.i("shoppppp", Integer.toString(shopList.getArrayShop().size()));
+	private void GetAllShopsSQLite() {
+		shoplist_shopDAO = new ShopList_ShopDAO(this);
+		shoplistArray = shoplist_shopDAO.getTodos();
 
-			if (task.getStatus().FINISHED != null) {
-				adapter = new SimpleAdapterAllshops(getApplicationContext(),
-						shopList.getArrayShop());
-				listView.setAdapter(adapter);
-			}
+		adapter = new SimpleAdapterAllshops(this, shoplistArray);
+		listView.setAdapter(adapter);
 
-		} catch (InterruptedException | ExecutionException e) {
-			e.printStackTrace();
-		}
-		;
+	}
 
+	private void SaveShopTypeSQLite(TypeShopList typeShop) {
+		shopTypeList_shopTypeDAO = new ShopType_ShopTypeDAO(getApplicationContext());
+		shopTypeList_shopTypeDAO.createTodo(typeShop);
+
+	}
+
+	private void SaveShopListSQLite(ShopList shopList) {
+		shoplist_shopDAO = new ShopList_ShopDAO(getApplicationContext());
+		shoplist_shopDAO.createTodo(shopList);
 	}
 
 	@Override

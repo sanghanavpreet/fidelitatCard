@@ -55,7 +55,7 @@ public class SelectedItemActivity extends Activity {
 					listContactes.add("facebook");
 					listConImg.add(R.drawable.ic_facebookk);
 				}
-				if (!shop.getTelephones_fix().isEmpty() && !shop.getTelephones_mob().isEmpty()) {
+				if (!shop.getTelephones_fix().isEmpty() || !shop.getTelephones_mob().isEmpty()) {
 					listContactes.add("telephone");
 					listConImg.add(R.drawable.ic_menu_call);
 				}
@@ -135,7 +135,7 @@ public class SelectedItemActivity extends Activity {
 		gridView = (GridView) findViewById(R.id.SelectShopGridView1);
 		gridView.setAdapter(mAdapter);
 
-		txtShopName.setText(shop.getShopName());
+		txtShopName.setText(shop.getShopName() + " - " + shop.getTelephones_fix() + " " + shop.getTelephones_mob());
 //		txtDescripcion.setText(shop.getDesceiption());
 		txtDescripcion.setText(shop.getLatitiud() + " - " +  shop.getLongitud());
 	}
@@ -143,10 +143,10 @@ public class SelectedItemActivity extends Activity {
 	private void TelePhone() {
 		phoneFix = shop.getTelephones_fix();
 		phonMobil = shop.getTelephones_mob();
-		Log.i("telephone", "fix: " + phoneFix + "  mob: " + phonMobil);
+		//Log.i("telephone", "fix: " + phoneFix + "  mob: " + phonMobil);
 
 		if (phoneFix.length() >= 9 && phonMobil.length() >= 9) {
-
+			Log.i("telephone fix mobil", "fix: " + phoneFix + "  mob: " + phonMobil);
 			AlertDialog.Builder alert = new AlertDialog.Builder(SelectedItemActivity.this);
 			CharSequence[] array = { "Telèfon fix", "Telèfon mòbil" };
 			alert.setTitle("Seleccionar Telèfon:").setSingleChoiceItems(array, 0,
@@ -179,9 +179,11 @@ public class SelectedItemActivity extends Activity {
 
 		} else {
 			if (phoneFix.length() >= 9) {
+				Log.i("telephone only fix", "fix: " + phoneFix);
 				Telephone(phoneFix);
 			}
 			if (phonMobil.length() >= 9) {
+				Log.i("telephone only mobil", "mob: " + phonMobil);
 				Telephone(phonMobil);
 			}
 		}

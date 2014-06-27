@@ -29,7 +29,6 @@ import com.digiteix.models.TypeShop;
 public class JsonReadShop extends AsyncTask<String, Void, ShopList> {
 
 	private String url;
-	private String search1;
 	private String jsonResult;
 	private ShopList shopList;
 
@@ -43,12 +42,15 @@ public class JsonReadShop extends AsyncTask<String, Void, ShopList> {
 		try {
 
 			HttpClient httpclient = new DefaultHttpClient();
+//			HttpPost httppost = new HttpPost("http://shopapp.digiteix.info/rodadeter/comercos_roda/api/json/shops");
 			HttpPost httppost = new HttpPost(url);
-
+			
 			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
-			nameValuePairs.add(new BasicNameValuePair("search", search1));
+			nameValuePairs.add(new BasicNameValuePair("modified_after", null));
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
+			//http://apps.digiteix.info/tarjetes-fidelitzacio/tarjetes-fidelitzacio/api/json/shops?modiefed_after=YYYY-MM-DD
+			
 			HttpResponse response = httpclient.execute(httppost);
 			jsonResult = inputStreamToString(response.getEntity().getContent()).toString();
 			Log.i("prova", jsonResult);
@@ -112,11 +114,8 @@ public class JsonReadShop extends AsyncTask<String, Void, ShopList> {
 				String fb = jsonChildNode.optString("facebookUrl");
 				String twitter = jsonChildNode.optString("twitterUrl");
 
-				// Song song = new Song(songid, songName, genre, new
-				// Album(album), new Artist(artistname,
-				// artistsurname));
-				Shop shop = new Shop(shopId, shopName, description, new TypeShop(typeId, null, null, icon), longitude,
-						latitude, address, email, web, "625905874", "625905874", "159787794034679", "navpreetsangha1", zipCode, city,
+				Shop shop = new Shop(shopId, shopName, description, typeId, longitude,
+						latitude, address, email, web, telephones_fix, telephones_mob, fb, "navpreetsangha1", zipCode, city,
 						coverSmallUrl, coverBigUrl, status);
 				// Log.e("telephone", "tele" + shop.toString());
 				// Log.e("song", (shopId + "|" + shopName + "|" + description
@@ -130,7 +129,7 @@ public class JsonReadShop extends AsyncTask<String, Void, ShopList> {
 				// Add in playlisy
 
 				shopList.addShop(shop);
-				Log.e("telephone", "tele" + shop.getTelephones_fix());
+				//Log.e("telephone", "tele" + shop.getTelephones_fix());
 				// Log.e("shoddtelephone",
 				// shopList.getArrayShop().get(0).getTelephones_fix());
 			}

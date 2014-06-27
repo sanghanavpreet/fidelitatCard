@@ -1,8 +1,5 @@
 package adapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,34 +9,60 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.digiteix.models.Shop;
+import com.digiteix.models.ShopList;
 import com.fidelitat.R;
 
 public class SimpleAdapterAllshops extends ArrayAdapter<Shop> {
 
-	private ArrayList<Shop> itemList;
+
+	private ShopList itemList;
 	private Context context;
 
-	public SimpleAdapterAllshops(Context context2, ArrayList<Shop> itemList) {
-		super(context2, R.layout.list_view_shops_layout, itemList);
+
+	
+	// public SimpleAdapterAllshops(Context context, int resource, int
+	// textViewResourceId, List<Shop> objects) {
+	// super(context, resource, textViewResourceId, objects);
+	// // TODO Auto-generated constructor stub
+	// }
+	//
+	// public SimpleAdapterAllshops(ShopListActivity shopListActivity,
+	// ArrayList<ShopList> todos) {
+	// super(shopListActivity, R.layout.list_view_shops_layout, itemList);
+	// this.itemList = itemList;
+	// this.context = context;
+	// }
+	//
+	// public SimpleAdapterAllshops(Context context, ArrayList<Shop> itemLista)
+	// {
+	// super(context, R.layout.list_view_shops_layout);
+	// this.itemList = itemLista;
+	// this.context = context;
+	// }
+
+	public SimpleAdapterAllshops(Context context, ShopList itemList) {
+		super(context, R.layout.list_view_shops_layout);
 		this.itemList = itemList;
-		this.context = context2;
+		this.context = context;
 	}
+
 
 	public int getCount() {
 		if (itemList != null)
-			return itemList.size();
+			return itemList.getArrayShop().size();
 		return 0;
 	}
 
+
 	public Shop getItem(int position) {
 		if (itemList != null)
-			return itemList.get(position);
+			return itemList.getArrayShop().get(position);
 		return null;
 	}
 
 	public long getItemId(int position) {
 		if (itemList != null)
-			return itemList.get(position).hashCode();
+			return itemList.getArrayShop().get(position).hashCode();
 		return 0;
 	}
 
@@ -48,33 +71,32 @@ public class SimpleAdapterAllshops extends ArrayAdapter<Shop> {
 
 		View v = convertView;
 		if (v == null) {
-			LayoutInflater inflater = (LayoutInflater) context
-					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			v = inflater.inflate(R.layout.list_view_shops_layout, null);
 		}
 
-		Shop c = itemList.get(position);
+		Shop c = itemList.getArrayShop().get(position);
 
-		//Get artist name and surname
+		// Get artist name and surname
 		TextView shopName = (TextView) v.findViewById(R.id.txtAdaptarShopNameList);
 		TextView shopDesc = (TextView) v.findViewById(R.id.txtAdaptarShopDescripcionList);
 		ImageView imgTyp = (ImageView) v.findViewById(R.id.imgAdaptarSelectShopType);
 		ImageView imgShopLogo = (ImageView) v.findViewById(R.id.imgAdaptarShopListLogo);
-		
+
 		shopName.setText(c.getShopName());
-		shopDesc.setText(c.getAddress());
-//		imgTyp.setImageBitmap(bm);
-//		imgShopLogo
+//		shopDesc.setText(c.getAddress());
+		// imgTyp.setImageBitmap(bm);
+		// imgShopLogo
 
 		return v;
 
 	}
 
-	public List<Shop> getItemList() {
+	public ShopList getItemList() {
 		return itemList;
 	}
 
-	public void setItemList(ArrayList<Shop> itemList) {
+	public void setItemList(ShopList itemList) {
 		this.itemList = itemList;
 	}
 

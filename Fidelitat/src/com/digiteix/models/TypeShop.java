@@ -6,18 +6,21 @@ public class TypeShop implements Serializable {
 
 	private int id;
 	private String name;
+	private String description;
 	private String status;
 	private String icon;
 
-	public TypeShop(int id, String name, String status, String icon) {
+	public TypeShop(int id, String name, String description, String status, String icon) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.setDescription(description);
 		this.status = status;
 		this.icon = icon;
 	}
 
-	
+	public TypeShop() {
+	}
 
 	public int getId() {
 		return id;
@@ -49,6 +52,14 @@ public class TypeShop implements Serializable {
 
 	public void setIcon(String icon) {
 		this.icon = icon;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }
