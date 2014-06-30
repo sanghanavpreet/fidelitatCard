@@ -1,4 +1,5 @@
-/com
-/.gitignore
+/DAO
 /MySQLiteHelper
+/adapter
+/com
 /connection

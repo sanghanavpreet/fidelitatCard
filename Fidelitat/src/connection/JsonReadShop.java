@@ -49,7 +49,6 @@ public class JsonReadShop extends AsyncTask<String, Void, ShopList> {
 			nameValuePairs.add(new BasicNameValuePair("modified_after", null));
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
-			//http://apps.digiteix.info/tarjetes-fidelitzacio/tarjetes-fidelitzacio/api/json/shops?modiefed_after=YYYY-MM-DD
 			
 			HttpResponse response = httpclient.execute(httppost);
 			jsonResult = inputStreamToString(response.getEntity().getContent()).toString();

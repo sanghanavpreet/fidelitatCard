@@ -1,5 +1,7 @@
 package adapter;
 
+import DAO.ShopList_ShopDAO;
+import DAO.ShopType_ShopTypeDAO;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,96 +10,87 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ImageDownload.ImageLoader;
 import com.digiteix.models.Shop;
 import com.digiteix.models.ShopList;
+import com.digiteix.models.TypeShop;
+import com.digiteix.models.TypeShopList;
 import com.fidelitat.R;
 
 public class SimpleAdapterAllshops extends ArrayAdapter<Shop> {
 
-
-	private ShopList itemList;
+	private ShopList shopList;
 	private Context context;
-
-
-	
-	// public SimpleAdapterAllshops(Context context, int resource, int
-	// textViewResourceId, List<Shop> objects) {
-	// super(context, resource, textViewResourceId, objects);
-	// // TODO Auto-generated constructor stub
-	// }
-	//
-	// public SimpleAdapterAllshops(ShopListActivity shopListActivity,
-	// ArrayList<ShopList> todos) {
-	// super(shopListActivity, R.layout.list_view_shops_layout, itemList);
-	// this.itemList = itemList;
-	// this.context = context;
-	// }
-	//
-	// public SimpleAdapterAllshops(Context context, ArrayList<Shop> itemLista)
-	// {
-	// super(context, R.layout.list_view_shops_layout);
-	// this.itemList = itemLista;
-	// this.context = context;
-	// }
+	private ImageLoader imgLoader;
+	private TypeShop shopType;
+	private ShopType_ShopTypeDAO shopType_shopTypeDAO;
 
 	public SimpleAdapterAllshops(Context context, ShopList itemList) {
 		super(context, R.layout.list_view_shops_layout);
-		this.itemList = itemList;
+		this.shopList = itemList;
 		this.context = context;
 	}
 
 
 	public int getCount() {
-		if (itemList != null)
-			return itemList.getArrayShop().size();
+		if (shopList != null)
+			return shopList.getArrayShop().size();
 		return 0;
 	}
 
-
 	public Shop getItem(int position) {
-		if (itemList != null)
-			return itemList.getArrayShop().get(position);
+		if (shopList != null)
+			return shopList.getArrayShop().get(position);
 		return null;
 	}
 
 	public long getItemId(int position) {
-		if (itemList != null)
-			return itemList.getArrayShop().get(position).hashCode();
+		if (shopList != null)
+			return shopList.getArrayShop().get(position).hashCode();
 		return 0;
 	}
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
+	public View getView(int position, View v, ViewGroup parent) {
 
-		View v = convertView;
+		
 		if (v == null) {
 			LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			v = inflater.inflate(R.layout.list_view_shops_layout, null);
 		}
 
-		Shop c = itemList.getArrayShop().get(position);
+		Shop shop = shopList.getArrayShop().get(position);
+		imgLoader = new ImageLoader(context);
 
-		// Get artist name and surname
 		TextView shopName = (TextView) v.findViewById(R.id.txtAdaptarShopNameList);
 		TextView shopDesc = (TextView) v.findViewById(R.id.txtAdaptarShopDescripcionList);
 		ImageView imgTyp = (ImageView) v.findViewById(R.id.imgAdaptarSelectShopType);
 		ImageView imgShopLogo = (ImageView) v.findViewById(R.id.imgAdaptarShopListLogo);
 
-		shopName.setText(c.getShopName());
-//		shopDesc.setText(c.getAddress());
-		// imgTyp.setImageBitmap(bm);
-		// imgShopLogo
+		shopName.setText(shop.getShopName());
+		shopDesc.setText(shop.getDesceiption());
+		
+		shopType_shopTypeDAO = new ShopType_ShopTypeDAO(getContext());
+		shopType = new TypeShop();
+		shopType = shopType_shopTypeDAO.getTodos(shop.getId_type());
+
+		
+		
+		String urll = shop.getCoverBigUrl();
+		String name = shop.getShopName();
+
+		imgLoader.DisplayImage(urll, imgShopLogo, name);
 
 		return v;
 
 	}
 
-	public ShopList getItemList() {
-		return itemList;
+	public ShopList getShopList() {
+		return shopList;
 	}
 
-	public void setItemList(ShopList itemList) {
-		this.itemList = itemList;
+	public void setShopList(ShopList shopList) {
+		this.shopList = shopList;
 	}
 
 }

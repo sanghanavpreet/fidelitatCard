@@ -1,6 +1,5 @@
 package com.fidelitat;
 
-import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 import DAO.ShopList_ShopDAO;
@@ -34,7 +33,6 @@ public class ShopListActivity extends Activity {
 	private TypeShopList typeShop;
 	private ShopList_ShopDAO shoplist_shopDAO;
 	private ShopType_ShopTypeDAO shopTypeList_shopTypeDAO;
-	private ShopList shoplistArray;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,12 +44,12 @@ public class ShopListActivity extends Activity {
 
 		listView = (ListView) findViewById(R.id.listViewAllShops);
 
-		JsonReadShop task = new JsonReadShop(shopList, urlShop);
+		
 		try {
+			JsonReadShop task = new JsonReadShop(shopList, urlShop);
 			shopList = task.execute(new String[] {}).get();
 
 			JsonReadTypeShop task1 = new JsonReadTypeShop(typeShop, urlTypeShop);
-
 			typeShop = task1.execute(new String[] {}).get();
 
 			if (task.getStatus().FINISHED != null) {
@@ -80,11 +78,16 @@ public class ShopListActivity extends Activity {
 
 	}
 
+
 	private void GetAllShopsSQLite() {
 		shoplist_shopDAO = new ShopList_ShopDAO(this);
-		shoplistArray = shoplist_shopDAO.getTodos();
+		shopList = new ShopList();
+		shopList = shoplist_shopDAO.getTodos();
 
-		adapter = new SimpleAdapterAllshops(this, shoplistArray);
+		
+		
+		
+		adapter = new SimpleAdapterAllshops(this, shopList);
 		listView.setAdapter(adapter);
 
 	}
